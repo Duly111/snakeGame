@@ -8,13 +8,20 @@ let tileSize = canvas.width / tileCount - 2
 let headX = 10;
 let headY = 10;
 
+let appleX = 5;
+let appleY = 5;
+
 let xVelocity=0;
 let yVelocity=0;
+
+let randomNumberX = Math.random()*(30-10) + 10;
+let randomNumberY = Math.random()*(30-10) + 10;
 
 //game loop
 function drawGame(){
     clearScreen();
     changeSnakePosition();
+    drawApple();
     drawSnake();
     setTimeout(drawGame,1000/speed);
 }
@@ -32,6 +39,11 @@ function drawSnake(){
 function changeSnakePosition(){
     headX = headX + xVelocity;
     headY = headY + yVelocity;
+}
+
+function drawApple(){
+    ctx.fillStyle = "red";
+    ctx.fillRect(appleX*randomNumberX,appleY*randomNumberY,tileSize,tileSize);
 }
 
 document.body.addEventListener('keydown',keyDown);
