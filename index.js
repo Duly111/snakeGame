@@ -26,6 +26,9 @@ let yVelocity=0;
 
 let score = 0;
 
+const gulpSound = new Audio('gulp-37759.mp3');
+const gameOverSound = new Audio('gameOverSound.mp3');
+
 
 //game loop
 function drawGame(){
@@ -51,16 +54,20 @@ function isGameOver(){
 
     if(headX< 0 || headX === tileCount){
         gameOver = true;
+        gameOverSound.play();
     }
     else if(headY < 0 || headY === tileCount){
         gameOver = true;
+        gameOverSound.play();
     }
 
     for(let i = 0;i < SnakeParts.length;i++){
         let part = SnakeParts[i];
         if(part.x == headX && part.y == headY){
             gameOver = true;
+            gameOverSound.play();
             break;
+            
         }
     }
 
@@ -70,7 +77,9 @@ function isGameOver(){
 
         ctx.fillText(`Game Over! Your score is ${score}.`,canvas.width/6.5,canvas.height/2)
     }
+    
     return gameOver;
+    
 }
 
 function drawScore(){
@@ -116,6 +125,7 @@ function checkAppleCollision(){
         appleY = Math.floor(Math.random() * tileCount)
         tailLenght++;
         score++;
+        gulpSound.play();
     }
 }
 
