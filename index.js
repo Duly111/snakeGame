@@ -45,11 +45,23 @@ function drawGame(){
 function isGameOver(){
     let gameOver = false;
 
+    if(yVelocity ===0 && xVelocity === 0){
+        return false;
+    }
+
     if(headX< 0 || headX === tileCount){
         gameOver = true;
     }
     else if(headY < 0 || headY === tileCount){
         gameOver = true;
+    }
+
+    for(let i = 0;i < SnakeParts.length;i++){
+        let part = SnakeParts[i];
+        if(part.x == headX && part.y == headY){
+            gameOver = true;
+            break;
+        }
     }
 
     if(gameOver){
@@ -63,8 +75,8 @@ function isGameOver(){
 
 function drawScore(){
     ctx.fillStyle = 'white';
-    ctx.font = '10px Verdana'
-    ctx.fillText('Score ' + score, canvas.width-50,10)
+    ctx.font = '13px Verdana'
+    ctx.fillText('Score ' + score, canvas.width-55,15)
 }
 
 function clearScreen(){
