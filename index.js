@@ -43,15 +43,15 @@ function drawGame(){
     drawSnake();
     drawScore();
 
-    if(score > 2){
-        speed = 11;
-    }
-    if(score > 5){
-        speed = 15;
-    }
-    if(score > 10){
-        speed = 18;
-    }
+    // if(score > 2){
+    //     speed = 11;
+    // }
+    // if(score > 5){
+    //     speed = 15;
+    // }
+    // if(score > 10){
+    //     speed = 20;
+    // }
 
     setTimeout(drawGame,1000/speed);
 }
@@ -136,6 +136,7 @@ function checkAppleCollision(){
         appleY = Math.floor(Math.random() * tileCount)
         tailLenght++;
         score++;
+        speed++;
         gulpSound.play();
     }
 }
